@@ -27,7 +27,7 @@ A\: Because it is. I plan on adding many more features to this as time goes on. 
 
 Q\: I get a JNI error when I try to run the program
 
-A\: I'm pretty sure that's on java's end. Try [this](https://stackoverflow.com/a/57796364) link to fix it.
+A\: I'm pretty sure that's on Java's end. Update Java to 12 or greater or try [this](https://stackoverflow.com/a/57796364) link to fix it.
 
 ---
 
