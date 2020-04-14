@@ -23,13 +23,13 @@ Q\: Why does this seem so unfinished?
 
 A\: Because it is. I plan on adding many more features to this as time goes on. Future planned changes include cleaning up the code (sorry it's a mess), a better gui, possibly adding file association for vpks, and much more.
 
-===
+
 
 Q\: I get a JNI error when I try to run the program
 
 A\: I'm pretty sure that's on java's end. Try [this](https://stackoverflow.com/a/57796364) link to fix it.
 
-===
+
 
 Q\: Why isn't it working?
 
