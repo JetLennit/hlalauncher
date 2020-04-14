@@ -6,7 +6,7 @@ First, either download a release zip from the release section, or compile it you
 
 ### GUI Launcher\:
 
-1. Download the latest version of the JRE (Java Runtime Environment)
+1. Download Java 12 or greater, you may have to delete an old version of Java as well.
 2. Put all your map files in the same folder as your HLALauncher.jar and hlalauncher.exe files
 3. Run the jar file, select your map, and click the button at the bottom
 4. If asked, enter your install location for Half-Life: Alyx (eg. C:\Program Files (x86)\Steam\steamapps\common\Half-Life Alyx) without quotes or a slash at the end
