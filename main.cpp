@@ -6,12 +6,12 @@
 
 using namespace std;
 
-string exepath = "\\game\\bin\\win64\\hlvr.exe";
-string destination = "\\game\\hlvr\\maps\\";
-string mapname = "error";
+const string exepath = "\\game\\bin\\win64\\hlvr.exe";
+const string destination = "\\game\\hlvr\\maps\\";
 
-string path = "!";
+string mapname;
 string prgpath;
+string path;
 
 
 string getfilename (const string& str) {
@@ -83,27 +83,38 @@ void runalyx(){
 }
 
 int main(int argc, char *argv[]){
-    prgpath = getpath(argv[0]);
 
-    if(argc < 2)
+    //check if map file exists and is valid
+    if(argc < 2){
+        cout << "Map file required" << endl;
         return 0;
+    } else if((!fexists(argv[2])) || (argv[2].substr(argv[2].length() - 3) != "vpk")){
+        cout << "Invalid map file" << endl;
+        return 0;
+    } 
 
+    prgpath = getpath(argv[0]);
+    mapname = getfilename(argv[1]);
+
+    //create config if it doesn't already exist
     if(fexists(prgpath + "\\hlalaunchconfig.txt") != true)
         createconfig();
     else
         readconfig();
 
-    mapname = getfilename(argv[1]);
 
     string fdestination = path+destination+mapname;
 
     //copy the map to destination
     copy(argv[1], fdestination);
     
+    //run half life alyx
     runalyx();
 
     //delete map after finished
     remove(&(fdestination[0]));
     
     //getchar();
+
+    return 0;
 }   
