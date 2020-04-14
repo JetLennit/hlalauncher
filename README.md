@@ -1,6 +1,6 @@
 # HLALauncher - A Map Launcher for Half-Life: Alyx
 
-Currently this launcher only supports VPKs, not scripts. But if you already have a script for a map installed, then it should be able to run the VPK.
+Currently this launcher only supports VPKs, not scripts. If you already have a script for a map installed then it should be able to run the VPK.
 
 ## Usage\:
 
