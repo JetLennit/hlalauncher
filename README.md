@@ -25,7 +25,7 @@ First, either download a release zip from the release section, or compile it you
 1. Right click on a VPK and open Properties
 2. Click the "Change" button next to the Opens With: section
 3. Click "More Apps" then "Look for another app on this PC"
-4. Click hlalauncher.exe
+4. Go to where you have hlalauncher.exe installed and click on it
 5. Apply your settings then double click the vpk
 6. If asked, enter your install location for Half-Life: Alyx (eg. C:\Program Files (x86)\Steam\steamapps\common\Half-Life Alyx) without quotes or a slash at the end
 7. Enjoy!
