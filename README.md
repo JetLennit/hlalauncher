@@ -2,7 +2,7 @@
 
 ## Usage\:
 
-First, either download a release zip from the release section, or compile it yourself using the compile.bat file in the repository. Make sure to keep the HLALauncher.jar and hlalauncher.exe files in the same folder at all times.
+First, either download a release zip from the release section, or compile it yourself using the compile.bat file in the repository. Make sure to keep the HLALauncher.jar and hlalauncher.exe files in the same folder at all times. If you downlaoded the zip, take the hlalauncher folder out of it.
 
 ### GUI Launcher\:
 
