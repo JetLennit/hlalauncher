@@ -33,7 +33,7 @@ First, either download a release zip from the release section, or compile it you
 ## Q and A\:
 Q\: Why does this seem so unfinished?
 
-A\: Because it is. I plan on adding many more features to this as time goes on. Future planned changes include cleaning up the code (sorry it's a mess), a better gui, possibly adding file association for vpks, and much more.
+A\: Because it is. I plan on adding many more features to this as time goes on. Future planned changes include cleaning up the code (sorry it's a mess), a better gui, and much more.
 
 ---
 
