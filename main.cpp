@@ -15,14 +15,13 @@ string mapname;
 string prgpath;
 string path;
 
-
 string getfilename (const string& str) {
     size_t found = str.find_last_of("/\\");
     return str.substr(found+1);
 }
 
 string getpath (const string& str) {
-    size_t found = str.find_last_of("/\\");
+    size_t found = str.find_last_of("/\\");\
     return str.substr(0, found);
 }
 
@@ -85,7 +84,7 @@ void createargs(){
     cout << "You can change these in hlalaunchoptions.txt in the future." << endl;
 
     lofile.open(prgpath + "\\hlalaunchoptions.txt");
-    cout <<("Saving launch options to hlalaunchoptions.txt") << endl;
+    cout << ("Saving launch options to hlalaunchoptions.txt") << endl;
     lofile << launchoptions;
     lofile.close();
 }
@@ -154,7 +153,7 @@ int main(int argc, char *argv[]){
     
     //run half life alyx
     runalyx();
-
+    
     //delete map after finished
     remove(&(fdestination[0]));
     

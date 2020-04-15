@@ -78,7 +78,7 @@ final int FRAME_HEIGHT = 800;
             public void actionPerformed(ActionEvent e) {
             	if(vpktable.getValueAt(vpktable.getSelectedRow(), 0) != null){
 					try {
-						Runtime.getRuntime().exec("cmd /c start cmd.exe /K " + path + "\\hlalauncher.exe " + path + "\\" + vpktable.getValueAt(vpktable.getSelectedRow(), 0));
+						Runtime.getRuntime().exec("cmd /c start cmd.exe /c " + path + "\\hlalauncher.exe " + path + "\\" + vpktable.getValueAt(vpktable.getSelectedRow(), 0));
 						System.exit(0); 
 					} catch (IOException e1) {
 						e1.printStackTrace();
