@@ -47,10 +47,12 @@ final int FRAME_HEIGHT = 800;
 		//make data displayable and prettier
 		JTable vpktable = new JTable(vpkrows, labels);
 		vpktable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
 		TableColumnModel columnmodel = vpktable.getColumnModel();
 		columnmodel.getColumn(0).setPreferredWidth((int)(FRAME_WIDTH*.85));
 		columnmodel.getColumn(1).setPreferredWidth((int)(FRAME_WIDTH*.10));
 		columnmodel.getColumn(2).setPreferredWidth((int)(FRAME_WIDTH*.05));
+
 		JScrollPane tablepane = new JScrollPane(vpktable);
 
 		//initialize button
