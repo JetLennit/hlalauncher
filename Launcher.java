@@ -33,23 +33,24 @@ final int FRAME_HEIGHT = 800;
 		File[] vpks = dir.listFiles(filter); 
 		
 		//create date formate
-		SimpleDateFormat dateformat = new SimpleDateFormat("MM/dd/yyyy hh:mm a z");
+		SimpleDateFormat dateformat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
 
 		//fill table of vpks and adds labels
 		Object[][] vpkrows = new Object[vpks.length][3];
 		for (int i = 0; i < vpks.length; i++)  {
 			vpkrows[i][0] = vpks[i].getName();
-			vpkrows[i][1] = vpks[i].length()/(1024) + " kb";
-			vpkrows[i][2] = dateformat.format(vpks[i].lastModified());
+			vpkrows[i][1] = dateformat.format(vpks[i].lastModified());
+			vpkrows[i][2] = vpks[i].length()/(1024) + " kb";
 		}
-		Object[] labels = {"Title", "Size", "Last Modified"};
+		Object[] labels = {"Title", "Last Modified", "Size"};
 
 		//make data displayable and prettier
 		JTable vpktable = new JTable(vpkrows, labels);
+		vpktable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		TableColumnModel columnmodel = vpktable.getColumnModel();
-		columnmodel.getColumn(0).setPreferredWidth(FRAME_WIDTH/2);
-		columnmodel.getColumn(1).setPreferredWidth(FRAME_WIDTH/4);
-		columnmodel.getColumn(2).setPreferredWidth(FRAME_WIDTH/4);
+		columnmodel.getColumn(0).setPreferredWidth((int)(FRAME_WIDTH*.85));
+		columnmodel.getColumn(1).setPreferredWidth((int)(FRAME_WIDTH*.10));
+		columnmodel.getColumn(2).setPreferredWidth((int)(FRAME_WIDTH*.05));
 		JScrollPane tablepane = new JScrollPane(vpktable);
 
 		//initialize button
