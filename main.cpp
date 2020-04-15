@@ -10,10 +10,10 @@ using namespace std;
 const string exepath = "\\game\\bin\\win64\\hlvr.exe";
 const string destination = "\\game\\hlvr\\maps\\";
 
+string launchoptions = "-novid -console -vconsole"; 
 string mapname;
 string prgpath;
 string path;
-
 
 string getfilename (const string& str) {
     size_t found = str.find_last_of("/\\");
@@ -21,7 +21,7 @@ string getfilename (const string& str) {
 }
 
 string getpath (const string& str) {
-    size_t found = str.find_last_of("/\\");
+    size_t found = str.find_last_of("/\\");\
     return str.substr(0, found);
 }
 
@@ -31,6 +31,7 @@ bool fexists(const string filename) {
 
 void createconfig(){
     ofstream config;
+    cout << ("Searching for HLA at default directory...") << endl;
 
     if(fexists("C:\\Program Files (x86)\\Steam\\steamapps\\common\\Half-Life Alyx\\game\\bin\\win64\\hlvr.exe"))
         path = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Half-Life Alyx";
@@ -38,7 +39,7 @@ void createconfig(){
         int presult = 0;
         while(presult != 1){
             path = "";
-            cout <<("Couldn't find HLA at default directory...") << endl;
+            cout <<("Couldn't find HLA at set directory...") << endl;
             cout <<("Please paste the path to your Half-Life Alyx folder: ");
             getline(std::cin, path);
             if (!path.empty() && path[path.length()-1] == '\n') {
@@ -49,17 +50,53 @@ void createconfig(){
         }
     }
 
-    config.open(prgpath + "\\hlalaunchconfig.txt");
+    config.open(prgpath + "\\hlapath.txt");
+    cout << ("Saving path to hlapath.txt") << endl;
     config << path;
     config.close();
 }
 
 void readconfig(){
-    fstream config(prgpath + "\\hlalaunchconfig.txt");
+    cout <<("HLA path file found...") << endl;
+
+    fstream config(prgpath + "\\hlapath.txt");
 
     getline(config, path);
-
     config.close();
+
+    if(!fexists(path + exepath)){
+        cout <<("HLA path not configured properly") << endl;
+        createconfig();
+    }
+}
+
+void createargs(){
+    string loinput;
+
+    ofstream lofile;
+    cout <<("Couldn't find launch options file...") << endl;
+    cout <<("Please input any launch options you want (leave blank for -novid -console -vconsole): ");
+    getline(std::cin, loinput);
+
+    if(loinput != "")
+        launchoptions = loinput;
+
+    cout << "You can change these in hlalaunchoptions.txt in the future." << endl;
+
+    lofile.open(prgpath + "\\hlalaunchoptions.txt");
+    cout << ("Saving launch options to hlalaunchoptions.txt") << endl;
+    lofile << launchoptions;
+    lofile.close();
+}
+
+void readargs(){
+    cout <<("HLA launch options file found...") << endl;
+
+    fstream lofile(prgpath + "\\hlalaunchoptions.txt");
+
+    getline(lofile, launchoptions);
+
+    lofile.close();
 }
 
 int copy(string sp, string dp){
@@ -71,12 +108,10 @@ int copy(string sp, string dp){
 
 void runalyx(){
     int cmdresult;
-    string command = "\"" + path + exepath + "\"" + " -novid -console -vconsole +map " + mapname;
-    
-    cout << command << endl;
-    //run the program
+    string command = "\"" + path + exepath + "\" " + launchoptions + " +map " + mapname;
 
-    cout <<("Running Alyx\n");
+    //run the program
+    cout <<("Running " + command);
 
     cmdresult = system(&(command[0]));
 
@@ -101,10 +136,15 @@ int main(int argc, char *argv[]){
     mapname = getfilename(argv[1]);
 
     //create config if it doesn't already exist
-    if(fexists(prgpath + "\\hlalaunchconfig.txt") != true)
+    if(fexists(prgpath + "\\hlapath.txt") != true)
         createconfig();
     else
         readconfig();
+        
+    if(fexists(prgpath + "\\hlalaunchoptions.txt") != true)
+        createargs();
+    else
+        readargs();
 
     string fdestination = path+destination+mapname;
 
@@ -113,7 +153,7 @@ int main(int argc, char *argv[]){
     
     //run half life alyx
     runalyx();
-
+    
     //delete map after finished
     remove(&(fdestination[0]));
     
