@@ -47,11 +47,13 @@ public class Launcher {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	System.out.println(list.getSelectedValue());
-            	try {
-					Runtime.getRuntime().exec(path + "\\hlalauncher.exe " + path + "\\" + list.getSelectedValue());
-				} catch (IOException e1) {
-					e1.printStackTrace();
+            	if(list.getSelectedValue() != null){
+					try {
+						Runtime.getRuntime().exec("cmd /c start cmd.exe /K " + path + "\\hlalauncher.exe " + path + "\\" + list.getSelectedValue());
+						System.exit(0); 
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}
             }
         });
