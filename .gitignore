@@ -1,7 +1,6 @@
-
+.vscode
 *.class
 *.jar
 *.exe
-readme.txt
 *.txt
 *.vpk

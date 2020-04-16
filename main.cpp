@@ -4,11 +4,13 @@
 #include <cstring>
 #include <unistd.h>
 #include <cstddef> 
+#include <Windows.h>
 
 using namespace std;
 
 const string exepath = "\\game\\bin\\win64\\hlvr.exe";
 const string destination = "\\game\\hlvr\\maps\\";
+
 
 string launchoptions = "-novid -console -vconsole"; 
 string mapname;
@@ -42,9 +44,8 @@ void createconfig(){
             cout <<("Couldn't find HLA at set directory...") << endl;
             cout <<("Please paste the path to your Half-Life Alyx folder: ");
             getline(std::cin, path);
-            if (!path.empty() && path[path.length()-1] == '\n') {
+            if (!path.empty() && path[path.length()-1] == '\n')
                 path.erase(path.length()-1);
-            }
             if(fexists(path+"\\game\\bin\\win64\\hlvr.exe"))
                 presult = 1;
         }
@@ -101,7 +102,10 @@ void readargs(){
 
 int copy(string sp, string dp){
     string cmd;
-    cmd = "copy \"" + sp + "\" \"" + dp + "\"";
+    if(GetFileAttributesA(&(sp[0])) & FILE_ATTRIBUTE_DIRECTORY)
+        cmd = "echo d | Xcopy /s /y /q \"" + sp + "\" \"" + dp + "\"";
+    else
+        cmd = "copy \"" + sp + "\" \"" + dp + "\"";
     system(&(cmd[0]));
     return 1;
 }
@@ -131,6 +135,8 @@ int main(int argc, char *argv[]){
         return 0;
     } 
 
+    cout << argc << endl;
+
     prgpath = getpath(argv[0]);
 
     mapname = getfilename(argv[1]);
@@ -146,17 +152,21 @@ int main(int argc, char *argv[]){
     else
         readargs();
 
-    string fdestination = path+destination+mapname;
+    string mdestination = path+destination+mapname;
+    string sdestination = path+"\\game\\hlvr\\scripts";
+
+    if(argc > 2)
+        if(fexists(argv[2]))
+            copy(argv[2], sdestination);
 
     //copy the map to destination
-    copy(argv[1], fdestination);
+    copy(argv[1], mdestination);
     
     //run half life alyx
     runalyx();
     
     //delete map after finished
-    remove(&(fdestination[0]));
-    
+    remove(&(mdestination[0]));
     //getchar();
 
     return 0;

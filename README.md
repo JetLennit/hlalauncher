@@ -30,6 +30,14 @@ First, either download a release zip from the release section, or compile it you
 6. If asked, enter your install location for Half-Life: Alyx (eg. C:\Program Files (x86)\Steam\steamapps\common\Half-Life Alyx) without quotes or a slash at the end
 7. Enjoy!
 
+### Using Scripts\:
+
+*Scripts currently only work with the Java launcher*
+
+1. Create a new folder in the same directory as your HLALauncher.jar that's name is the same as your map file without an extension. For example, if I was trying to load test.vpk with it's scripts I would create a folder called test
+2. Drag and drop your scripts folder into that new directory you created
+3. Use the Java launcher as normal (See GUI Launcher)
+
 ## Q and A\:
 Q\: Why does this seem so unfinished?
 
