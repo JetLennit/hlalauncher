@@ -12,13 +12,15 @@ First, either download a release zip from the release section, or compile it you
 2. Put all your map files in the same folder as your HLALauncher.jar and hlalauncher.exe files
 3. Run the jar file, select your map, and click the button at the bottom
 4. If asked, enter your install location for Half-Life: Alyx (eg. C:\Program Files (x86)\Steam\steamapps\common\Half-Life Alyx) without quotes or a slash at the end
-5. Enjoy!
+5. If asked, enter whatever launch options you would like the launcher to run the game with, or leave blank to use default. This can be changed in hlalaunchoptions.txt later
+6. Enjoy!
 
 ### Drag and Drop\:
 
 1. Drag your map file onto hlalauncher.exe
 2. If asked, enter your install location for Half-Life: Alyx (eg. C:\Program Files (x86)\Steam\steamapps\common\Half-Life Alyx) without quotes or a slash at the end
-3. Enjoy!
+3. If asked, enter whatever launch options you would like the launcher to run the game with, or leave blank to use default. This can be changed in hlalaunchoptions.txt later
+4. Enjoy!
 
 ### Association\:
 
@@ -28,7 +30,8 @@ First, either download a release zip from the release section, or compile it you
 4. Go to where you have hlalauncher.exe installed and click on it
 5. Apply your settings then double click the vpk
 6. If asked, enter your install location for Half-Life: Alyx (eg. C:\Program Files (x86)\Steam\steamapps\common\Half-Life Alyx) without quotes or a slash at the end
-7. Enjoy!
+7. If asked, enter whatever launch options you would like the launcher to run the game with, or leave blank to use default. This can be changed in hlalaunchoptions.txt later
+8. Enjoy!
 
 ### Using Scripts\:
 
