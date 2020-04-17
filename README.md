@@ -7,6 +7,8 @@
 3. Script folder works
 4. Can be set as default way to open vpk for quick map launching
 5. Easy to use drag and drop option
+
+
 (There is not yet support for multi-map campaigns, but I plan to add that soon.)
 
 ## Usage\:
