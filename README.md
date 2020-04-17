@@ -2,11 +2,11 @@
 
 ## Features\:
 
-*GUI that shows date created and file size
-*Launch options work
-*Script folder works
-*Can be set as default way to open vpk for quick map launching
-*Easy to use drag and drop option
+..*GUI that shows date created and file size
+..*Launch options work
+..*Script folder works
+..*Can be set as default way to open vpk for quick map launching
+..*Easy to use drag and drop option
 (There is not yet support for multi-map campaigns, but I plan to add that soon.)
 
 ## Usage\:
