@@ -1,6 +1,13 @@
 # HLALauncher - A Map Launcher for Half-Life: Alyx
 
-Currently this launcher only supports VPKs, not scripts. If you already have a script for a map installed then it should be able to run the VPK. There is also not yet support for multi-map campaigns, but I plan to add that soon.
+## Features\:
+
+>>GUI that shows date created and file size
+>>Launch options work
+>>Script folder works
+>>Can be set as default way to open vpk for quick map launching
+>>Easy to use drag and drop option
+(There is not yet support for multi-map campaigns, but I plan to add that soon.)
 
 ## Usage\:
 
@@ -8,7 +15,7 @@ First, either download a release zip from the release section, or compile it you
 
 ### GUI Launcher\:
 
-1. Download Java 12 or greater, you may have to delete an old version of Java as well.
+1. Download ~~Java 12 or greater~~ **Java 8 should now be sufficient and can be found here [https://java.com/en/download/](https://java.com/en/download/) (please let me know if this works)**, you may have to delete an old version of Java as well.
 2. Put all your map files in the same folder as your HLALauncher.jar and hlalauncher.exe files
 3. Run the jar file, select your map, and click the button at the bottom
 4. If asked, enter your install location for Half-Life: Alyx (eg. C:\Program Files (x86)\Steam\steamapps\common\Half-Life Alyx) without quotes or a slash at the end
@@ -32,11 +39,9 @@ First, either download a release zip from the release section, or compile it you
 
 ### Using Scripts\:
 
-*Scripts currently only work with the Java launcher*
-
-1. Create a new folder in the same directory as your HLALauncher.jar that's name is the same as your map file without an extension. For example, if I was trying to load test.vpk with it's scripts I would create a folder called test
+1. Create a new folder in the same directory as the map you are trying to run and name it the same thing as your map file without an extension. For example, if I was trying to load test.vpk with it's scripts I would create a folder called test
 2. Drag and drop your scripts folder into that new directory you created
-3. Use the Java launcher as normal (See GUI Launcher)
+3. Use the launcher as normal, making sure to keep the new folder in the same directory as your map whenever you run it.
 
 ## Q and A\:
 Q\: Why does this seem so unfinished?

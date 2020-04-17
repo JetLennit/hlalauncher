@@ -11,19 +11,25 @@ using namespace std;
 const string exepath = "\\game\\bin\\win64\\hlvr.exe";
 const string destination = "\\game\\hlvr\\maps\\";
 
-
 string launchoptions = "-novid -console -vconsole"; 
 string mapname;
 string prgpath;
 string path;
+string script;
+string tmpscript;
 
 string getfilename (const string& str) {
     size_t found = str.find_last_of("/\\");
     return str.substr(found+1);
 }
 
+string removeextension (const string& str) {
+    size_t found = str.find_last_of(".");
+    return str.substr(0, found);
+}
+
 string getpath (const string& str) {
-    size_t found = str.find_last_of("/\\");\
+    size_t found = str.find_last_of("/\\");
     return str.substr(0, found);
 }
 
@@ -110,6 +116,13 @@ int copy(string sp, string dp){
     return 1;
 }
 
+int removedir(string dir){
+    string cmd;
+    cmd = "rd \"" + dir + "\" /q /s";
+    system(&(cmd[0]));
+    return 1;
+}
+
 void runalyx(){
     int cmdresult;
     string command = "\"" + path + exepath + "\" " + launchoptions + " +map " + mapname;
@@ -140,6 +153,8 @@ int main(int argc, char *argv[]){
     prgpath = getpath(argv[0]);
 
     mapname = getfilename(argv[1]);
+    
+    script = getpath(argv[1])+"\\"+removeextension(mapname)+"\\scripts";
 
     //create config if it doesn't already exist
     if(fexists(prgpath + "\\hlapath.txt") != true)
@@ -155,9 +170,19 @@ int main(int argc, char *argv[]){
     string mdestination = path+destination+mapname;
     string sdestination = path+"\\game\\hlvr\\scripts";
 
-    if(argc > 2)
+    tmpscript = path+"\\game\\hlvr\\oldscripts";
+    cout << tmpscript << endl;
+
+    /*if(argc > 2)
         if(fexists(argv[2]))
-            copy(argv[2], sdestination);
+            copy(argv[2], sdestination);*/
+
+
+    if(fexists(script)){
+        if(fexists(sdestination))
+            rename(&(sdestination[0]), &(tmpscript[0]));
+        copy(script,sdestination);
+    }
 
     //copy the map to destination
     copy(argv[1], mdestination);
@@ -167,6 +192,13 @@ int main(int argc, char *argv[]){
     
     //delete map after finished
     remove(&(mdestination[0]));
+
+    if(fexists(sdestination)){
+        removedir(sdestination);
+        if(fexists(tmpscript))
+            rename(&(tmpscript[0]), &(sdestination[0]));
+    }
+
     //getchar();
 
     return 0;
