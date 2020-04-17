@@ -79,8 +79,7 @@ final int FRAME_HEIGHT = 800;
             	if(vpktable.getValueAt(vpktable.getSelectedRow(), 0) != null){
 					try {
 						Runtime.getRuntime().exec("cmd /c start \"\" \"" + path + "\\hlalauncher.exe\" \"" + 
-																		   path + "\\" + vpktable.getValueAt(vpktable.getSelectedRow(), 0) + "\" \"" + 
-																		   path + "\\" + vpktable.getValueAt(vpktable.getSelectedRow(), 0).toString().replaceFirst("[.][^.]+$", "") + "\\scripts\"");
+																		   path + "\\" + vpktable.getValueAt(vpktable.getSelectedRow(), 0) + "\""); 
 						System.exit(0); 
 					} catch (IOException e1) {
 						e1.printStackTrace();
