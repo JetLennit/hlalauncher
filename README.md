@@ -1,7 +1,7 @@
 
 # HLALauncher - A Map Launcher for Half-Life: Alyx
 
-## Features\:
+## Features
 
 1. GUI that shows date created and file size
 
@@ -21,7 +21,7 @@ First, either download a release zip from the release section, or compile it you
 
 ### GUI Launcher
 
-1. Download ~~Java 12 or greater~~ **Java 8 should now be sufficient and can be found here [https://java.com/en/download/](https://java.com/en/download/) (please let me know if this works)**, you may have to delete an old version of Java as well.
+1. ~~Download Java 12 or greater, you may have to delete an old version of Java as well.~~ **Java 8 should now be sufficient and can be found [here](https://java.com/en/download/) (please let me know if this works)**
 
 2. Put all your map files in the same folder as your HLALauncher.jar and hlalauncher.exe files
 
@@ -61,11 +61,7 @@ First, either download a release zip from the release section, or compile it you
 
 8. Enjoy!
 
-  
-
 ### Using Scripts
-
-  
 
 1. Create a new folder in the same directory as the map you are trying to run and name it the same thing as your map file without an extension. For example, if I was trying to load test.vpk with it's scripts I would create a folder called test
 

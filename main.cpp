@@ -63,7 +63,7 @@ void createconfig(){
             path = "";
             cout <<("Couldn't find HLA at set directory...") << endl;
             cout <<("Please paste the path to your Half-Life Alyx folder: ");
-            getline(std::cin, path);
+            getline(cin, path);
             if (!path.empty() && path[path.length()-1] == '\n')
                 path.erase(path.length()-1);
             if(fexists(path+"\\game\\bin\\win64\\hlvr.exe"))
@@ -97,7 +97,7 @@ void createargs(){
     ofstream lofile;
     cout <<("Couldn't find launch options file...") << endl;
     cout <<("Please input any launch options you want (leave blank for -novid -console -vconsole): ");
-    getline(std::cin, loinput);
+    getline(cin, loinput);
 
     if(loinput != "")
         launchoptions = loinput;
