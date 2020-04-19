@@ -9,7 +9,7 @@
 using namespace std;
 
 const string exepath = "\\game\\bin\\win64\\hlvr.exe";
-const string destination = "\\game\\hlvr\\maps\\";
+const string mappath = "\\game\\hlvr\\maps\\";
 
 string launchoptions = "-novid -console -vconsole"; 
 string mapname;
@@ -22,18 +22,33 @@ string getfilename (const string& str) {
     return str.substr(found+1);
 }
 
-string removeextension (const string& str) {
-    size_t found = str.find_last_of(".");
-    return str.substr(0, found);
-}
-
 string getpath (const string& str) {
     size_t found = str.find_last_of("/\\");
     return str.substr(0, found);
 }
 
+string removeextension (const string& str) {
+    size_t found = str.find_last_of(".");
+    return str.substr(0, found);
+}
+
 bool fexists(const string filename) {
     return access(&(filename[0]), F_OK) != -1;
+}
+
+int copy(string sp, string dp){
+    string cmd;
+    if(GetFileAttributesA(&(sp[0])) & FILE_ATTRIBUTE_DIRECTORY)
+        cmd = "echo d | Xcopy /s /y /q \"" + sp + "\" \"" + dp + "\"";
+    else
+        cmd = "copy \"" + sp + "\" \"" + dp + "\"";
+    return system(&(cmd[0]));;
+}
+
+int removedir(string dir){
+    string cmd;
+    cmd = "rd \"" + dir + "\" /q /s";
+    return system(&(cmd[0]));;
 }
 
 void createconfig(){
@@ -105,23 +120,6 @@ void readargs(){
     lofile.close();
 }
 
-int copy(string sp, string dp){
-    string cmd;
-    if(GetFileAttributesA(&(sp[0])) & FILE_ATTRIBUTE_DIRECTORY)
-        cmd = "echo d | Xcopy /s /y /q \"" + sp + "\" \"" + dp + "\"";
-    else
-        cmd = "copy \"" + sp + "\" \"" + dp + "\"";
-    system(&(cmd[0]));
-    return 1;
-}
-
-int removedir(string dir){
-    string cmd;
-    cmd = "rd \"" + dir + "\" /q /s";
-    system(&(cmd[0]));
-    return 1;
-}
-
 void runalyx(){
     int cmdresult;
     string command = "\"" + path + exepath + "\" " + launchoptions + " +map " + mapname;
@@ -164,15 +162,11 @@ int main(int argc, char *argv[]){
     else
         readargs();
 
-    string mdestination = path+destination+mapname;
+    string mdestination = path+mappath+mapname;
     string sdestination = path+"\\game\\hlvr\\scripts";
 
-    string tmpmap = path+destination+"old"+mapname;
+    string tmpmap = path+mappath+"old"+mapname;
     string tmpscript = path+"\\game\\hlvr\\oldscripts";
-
-    /*if(argc > 2)
-        if(fexists(argv[2]))
-            copy(argv[2], sdestination);*/
 
     //finds if there is already a script folder, creates temp script, and copy scripts
     if(fexists(scriptsrc)){
