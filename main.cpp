@@ -16,7 +16,6 @@ string mapname;
 string prgpath;
 string path;
 string scriptsrc;
-string tmpscript;
 
 string getfilename (const string& str) {
     size_t found = str.find_last_of("/\\");
@@ -168,8 +167,8 @@ int main(int argc, char *argv[]){
     string mdestination = path+destination+mapname;
     string sdestination = path+"\\game\\hlvr\\scripts";
 
-    tmpscript = path+"\\game\\hlvr\\oldscripts";
-    tmpmap = path+destination+"old"+mapname;
+    string tmpmap = path+destination+"old"+mapname;
+    string tmpscript = path+"\\game\\hlvr\\oldscripts";
 
     /*if(argc > 2)
         if(fexists(argv[2]))
