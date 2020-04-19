@@ -15,7 +15,7 @@ string launchoptions = "-novid -console -vconsole";
 string mapname;
 string prgpath;
 string path;
-string script;
+string scriptsrc;
 string tmpscript;
 
 string getfilename (const string& str) {
@@ -148,13 +148,11 @@ int main(int argc, char *argv[]){
         return 0;
     } 
 
-    cout << argc << endl;
-
     prgpath = getpath(argv[0]);
 
     mapname = getfilename(argv[1]);
     
-    script = getpath(argv[1])+"\\"+removeextension(mapname)+"\\scripts";
+    scriptsrc = getpath(argv[1])+"\\"+removeextension(mapname)+"\\scripts";
 
     //create config if it doesn't already exist
     if(fexists(prgpath + "\\hlapath.txt") != true)
@@ -171,33 +169,38 @@ int main(int argc, char *argv[]){
     string sdestination = path+"\\game\\hlvr\\scripts";
 
     tmpscript = path+"\\game\\hlvr\\oldscripts";
-    cout << tmpscript << endl;
+    tmpmap = path+destination+"old"+mapname;
 
     /*if(argc > 2)
         if(fexists(argv[2]))
             copy(argv[2], sdestination);*/
 
-
-    if(fexists(script)){
+    //finds if there is already a script folder, creates temp script, and copy scripts
+    if(fexists(scriptsrc)){
         if(fexists(sdestination))
             rename(&(sdestination[0]), &(tmpscript[0]));
-        copy(script,sdestination);
+        copy(scriptsrc,sdestination);
     }
 
-    //copy the map to destination
+    //finds if there is already a map with the name, creates temp map, and copy maps
+    if(fexists(mdestination))
+        rename(&(mdestination[0]), &(tmpmap[0]));
     copy(argv[1], mdestination);
-    
+
     //run half life alyx
     runalyx();
     
-    //delete map after finished
-    remove(&(mdestination[0]));
-
+    //delete scripts after finished and restores old scripts
     if(fexists(sdestination)){
         removedir(sdestination);
         if(fexists(tmpscript))
             rename(&(tmpscript[0]), &(sdestination[0]));
     }
+
+    //delete map after finished and restores old map
+    remove(&(mdestination[0]));
+    if(fexists(tmpmap))
+        rename(&(tmpmap[0]), &(mdestination[0]));
 
     //getchar();
 
