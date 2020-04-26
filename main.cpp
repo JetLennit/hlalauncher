@@ -3,7 +3,7 @@
 #include <string>
 #include <cstring>
 #include <unistd.h>
-#include <cstddef> 
+#include <cstddef>
 #include <Windows.h>
 
 using namespace std;
@@ -11,7 +11,7 @@ using namespace std;
 const string exepath = "\\game\\bin\\win64\\hlvr.exe";
 const string mappath = "\\game\\hlvr\\maps\\";
 
-string launchoptions = "-novid -console -vconsole"; 
+string launchoptions = "-novid -console -vconsole";
 string mapname;
 string prgpath;
 string path;
@@ -133,6 +133,16 @@ void runalyx(){
 }
 
 int main(int argc, char *argv[]){
+    
+    //facny splash screen
+    cout << " _   _  _       ___   _                                 _                 " << endl;
+    cout << "| | | || |     / _ \\ | |                               | |                " << endl;
+    cout << "| |_| || |    / /_\\ \\| |      __ _  _   _  _ __    ___ | |__    ___  _ __ " << endl;
+    cout << "|  _  || |    |  _  || |     / _` || | | || '_ \\  / __|| '_ \\  / _ \\| '__|" << endl;
+    cout << "| | | || |____| | | || |____| (_| || |_| || | | || (__ | | | ||  __/| |   " << endl;
+    cout << "\\_| |_/\\_____/\\_| |_/\\_____/ \\__,_| \\__,_||_| |_| \\___||_| |_| \\___||_|   " << endl;
+    cout << "==========================================================================" << endl << endl;
+
 
     //check if map file exists and is valid
     if(argc < 2){
@@ -143,12 +153,13 @@ int main(int argc, char *argv[]){
         cout << "Invalid map file, press enter to exit" << endl;
         getchar();
         return 0;
-    } 
+    }
+    
 
     prgpath = getpath(argv[0]);
 
     mapname = getfilename(argv[1]);
-    
+
     scriptsrc = getpath(argv[1])+"\\"+removeextension(mapname)+"\\scripts";
 
     //create config if it doesn't already exist
@@ -156,7 +167,7 @@ int main(int argc, char *argv[]){
         createconfig();
     else
         readconfig();
-        
+
     if(fexists(prgpath + "\\hlalaunchoptions.txt") != true)
         createargs();
     else
@@ -198,4 +209,4 @@ int main(int argc, char *argv[]){
     //getchar();
 
     return 0;
-}   
+}

@@ -21,7 +21,7 @@ First, either download a release zip from the release section, or compile it you
 
 ### GUI Launcher
 
-1. ~~Download Java 12 or greater, you may have to delete an old version of Java as well.~~ **Java 8 should now be sufficient and can be found [here](https://java.com/en/download/) (please let me know if this works)**
+1. Download the JRE or JDK
 
 2. Put all your map files in the same folder as your HLALauncher.jar and hlalauncher.exe files
 
