@@ -122,7 +122,7 @@ void readargs(){
 
 void runalyx(){
     int cmdresult;
-    string command = "\"" + path + exepath + "\" " + launchoptions + " +map " + mapname;
+    string command = "\"" + path + exepath + "\" " + launchoptions + " -vr +map " + mapname;
 
     //run the program
     cout <<("Running " + command);
